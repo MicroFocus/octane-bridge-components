@@ -11,7 +11,7 @@ Responsibility of this component is to provide connectivity endpoints for a remo
 Each endpoint should be capable of:
 - handling connection of multiple services of the specific type (for instance - CI Servers endpoint will handle bridges of all CI Servers)
 - managing connected services and their statuses
-- delivering messages to the remote service and receiving responses (in-bond and out-bond)
+- delivering messages to the remote service and receiving responses (in-bond [as a response to a request] and out-bond [just a client message on it's own])
 - allow to submit request and synchronously wait for the response from hosting application perspective
 - functioning correctly in clustered environment
 
