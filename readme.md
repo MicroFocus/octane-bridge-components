@@ -18,3 +18,8 @@ Each endpoint should be capable of:
 #### Bridge Client Component
 
 Responsibility of this component is to provide smooth interaction with the underlying transport facility (WS, probably HTTP as a fallback in the future) while receiving messages from the server, and submitting responses to the server.
+
+Client should be capable of managing multiple bridges, each being capable of:
+- initiating stable connectivity with corresponding server's endpoint
+- retrieve messages from endpoint and deliver them to the hosting application
+- send appropriate response to the server's endpoint if/when relevant and available
