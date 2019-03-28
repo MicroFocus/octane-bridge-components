@@ -33,6 +33,16 @@ public class OctaneBridgeImpl implements OctaneBridge {
 	}
 
 	@Override
+	public void sendMessage(String message) {
+		bridgeWSClient.sendString(message);
+	}
+
+	@Override
+	public void sendMessage(byte[] message) {
+		bridgeWSClient.sendBinary(message);
+	}
+
+	@Override
 	public void close() {
 		bridgeWSClient.stop();
 		logger.info("bridge to " + configuration + " closed");
