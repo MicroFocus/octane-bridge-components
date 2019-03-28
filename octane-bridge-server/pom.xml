@@ -23,6 +23,19 @@
 			<version>${slf4j.version}</version>
 		</dependency>
 
+		<!--TESTS-->
+		<dependency>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<groupId>org.apache.logging.log4j</groupId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<artifactId>junit</artifactId>
+			<groupId>junit</groupId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
 </project>
