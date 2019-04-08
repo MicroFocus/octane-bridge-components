@@ -1,10 +1,16 @@
 package com.microfocus.octane.bridge.server;
 
-import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
-public interface BridgedClient {
+public interface BridgedClient<T> {
 
 	String getRefId();
 
-	Future<Object> sendMessage(Object task);
+	T getMetadata();
+
+	String sendAndWaitForResult(Object task);
+
+	String sendAndWaitForResult(Object task, long timeout, TimeUnit timeUnit);
+
+	void sendAndForget(Object task);
 }

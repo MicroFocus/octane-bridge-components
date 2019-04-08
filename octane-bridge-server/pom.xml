@@ -14,6 +14,7 @@
 	<properties>
 		<slf4j.version>1.7.26</slf4j.version>
 		<javax-cache.version>1.1.0</javax-cache.version>
+		<javax-ws-rs-api.version>2.1.1</javax-ws-rs-api.version>
 	</properties>
 
 	<dependencies>
@@ -27,6 +28,11 @@
 			<artifactId>cache-api</artifactId>
 			<groupId>javax.cache</groupId>
 			<version>${javax-cache.version}</version>
+		</dependency>
+		<dependency>
+			<artifactId>javax.ws.rs-api</artifactId>
+			<groupId>javax.ws.rs</groupId>
+			<version>${javax-ws-rs-api.version}</version>
 		</dependency>
 
 		<!--TESTS-->
