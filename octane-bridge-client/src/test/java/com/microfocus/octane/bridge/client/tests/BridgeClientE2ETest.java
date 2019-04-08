@@ -5,7 +5,7 @@ import com.microfocus.octane.bridge.client.api.BridgeConfiguration;
 import com.microfocus.octane.bridge.client.api.OctaneBridge;
 import org.junit.Test;
 
-public class BridgeE2ETest {
+public class BridgeClientE2ETest {
 
 	@Test
 	public void test() {
