@@ -40,11 +40,30 @@
 			<artifactId>log4j-slf4j-impl</artifactId>
 			<groupId>org.apache.logging.log4j</groupId>
 			<version>${log4j.version}</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<artifactId>junit</artifactId>
 			<groupId>junit</groupId>
 			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<artifactId>jetty-server</artifactId>
+			<groupId>org.eclipse.jetty</groupId>
+			<version>${jetty.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<artifactId>websocket-server</artifactId>
+			<groupId>org.eclipse.jetty.websocket</groupId>
+			<version>${jetty.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<artifactId>websocket-servlet</artifactId>
+			<groupId>org.eclipse.jetty.websocket</groupId>
+			<version>${jetty.version}</version>
 			<scope>test</scope>
 		</dependency>
 
