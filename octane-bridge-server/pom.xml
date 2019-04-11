@@ -15,6 +15,7 @@
 		<slf4j.version>1.7.26</slf4j.version>
 		<javax-cache.version>1.1.0</javax-cache.version>
 		<javax-ws-rs-api.version>2.1.1</javax-ws-rs-api.version>
+		<fasterxml-jackson.version>2.9.8</fasterxml-jackson.version>
 
 		<!--TESTs-->
 		<octane-bridge-client.verion>1.0-SNAPSHOT</octane-bridge-client.verion>
@@ -36,6 +37,11 @@
 			<artifactId>javax.ws.rs-api</artifactId>
 			<groupId>javax.ws.rs</groupId>
 			<version>${javax-ws-rs-api.version}</version>
+		</dependency>
+		<dependency>
+			<artifactId>jackson-databind</artifactId>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<version>${fasterxml-jackson.version}</version>
 		</dependency>
 
 		<!--TESTS-->
