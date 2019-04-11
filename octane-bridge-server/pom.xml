@@ -15,6 +15,9 @@
 		<slf4j.version>1.7.26</slf4j.version>
 		<javax-cache.version>1.1.0</javax-cache.version>
 		<javax-ws-rs-api.version>2.1.1</javax-ws-rs-api.version>
+
+		<!--TESTs-->
+		<octane-bridge-client.verion>1.0-SNAPSHOT</octane-bridge-client.verion>
 	</properties>
 
 	<dependencies>
@@ -64,6 +67,12 @@
 			<artifactId>websocket-servlet</artifactId>
 			<groupId>org.eclipse.jetty.websocket</groupId>
 			<version>${jetty.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<artifactId>octane-bridge-client</artifactId>
+			<groupId>com.microfocus.octane</groupId>
+			<version>${octane-bridge-client.verion}</version>
 			<scope>test</scope>
 		</dependency>
 
