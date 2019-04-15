@@ -1,4 +1,4 @@
-package com.microfocus.octane.bridge.client.extensions;
+package com.microfocus.octane.bridge.client.extensions.httprequestproxy;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.microfocus.octane.bridge.client.api.OctaneTaskHandler;
@@ -12,7 +12,7 @@ public class HttpRequestProxyHandler implements OctaneTaskHandler {
 	}
 
 	@Override
-	public Object handle(String taskBody) throws Exception {
+	public String handle(String taskBody) throws Exception {
 		HttpRequestTask httpRequestTask = om.readValue(taskBody, HttpRequestTask.class);
 		if (httpRequestTask.method != null && httpRequestTask.url != null) {
 			System.out.println(httpRequestTask.method);

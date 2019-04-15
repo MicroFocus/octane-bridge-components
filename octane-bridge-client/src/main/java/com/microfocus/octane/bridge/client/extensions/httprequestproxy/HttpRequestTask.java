@@ -1,4 +1,4 @@
-package com.microfocus.octane.bridge.client.extensions;
+package com.microfocus.octane.bridge.client.extensions.httprequestproxy;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

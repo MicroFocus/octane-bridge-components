@@ -2,7 +2,7 @@ package com.microfocus.octane.bridge.client.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.microfocus.octane.bridge.client.api.*;
-import com.microfocus.octane.bridge.client.extensions.HttpRequestProxyHandler;
+import com.microfocus.octane.bridge.client.extensions.httprequestproxy.HttpRequestProxyHandler;
 import com.microfocus.octane.websocket.OctaneWSClientContext;
 import com.microfocus.octane.websocket.OctaneWSClientService;
 import com.microfocus.octane.websocket.OctaneWSEndpointClient;
@@ -95,7 +95,7 @@ public class OctaneBridgeImpl implements OctaneBridge {
 
 			//  handout task to handler and process result
 			tasksExecutors.execute(() -> {
-				Object result;
+				String result;
 
 				//  process task
 				try {
@@ -108,8 +108,11 @@ public class OctaneBridgeImpl implements OctaneBridge {
 
 				//  send result
 				try {
-					OctaneResultWrapper resultWrapper = new OctaneResultWrapper(taskWrapper.type, taskWrapper.refId, om.writeValueAsBytes(result));
-					bridgeWSClient.sendBinary(resultWrapper.bytes());
+					OctaneResultWrapper resultWrapper = new OctaneResultWrapper();
+					resultWrapper.type = taskWrapper.type;
+					resultWrapper.refId = taskWrapper.refId;
+					resultWrapper.body = result;
+					bridgeWSClient.sendString(om.writeValueAsString(resultWrapper));
 				} catch (Exception e) {
 					logger.error("failed to serialize result of task handling of " + handler.getClass().getSimpleName());
 					//  TODO: consider to send some error message if expected result
