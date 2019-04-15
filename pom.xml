@@ -20,19 +20,21 @@
 		<jdk.version>1.8</jdk.version>
 		<baseNexusURL>http://mydtbld0051.hpeswlab.net:8081/nexus</baseNexusURL>
 		<enable.snapshots>false</enable.snapshots>
-		<versions-maven-plugin.version>2.7</versions-maven-plugin.version>
+
 		<maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
-		<maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
-		<maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
-		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
-		<maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
 		<maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
+		<maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
+		<maven-install-plugin.version>3.0.0-M1</maven-install-plugin.version>
+		<versions-maven-plugin.version>2.7</versions-maven-plugin.version>
+		<maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
 		<git.revision>none</git.revision>
 		<git.url>none</git.url>
 
 		<!--TESTS-->
 		<log4j.version>2.11.2</log4j.version>
+		<maven-enforcer-plugin.version>3.0.0-M2</maven-enforcer-plugin.version>
 		<spotbugs.version>3.1.11</spotbugs.version>
 		<skipTests>true</skipTests>
 		<junit.version>4.12</junit.version>
@@ -115,14 +117,17 @@
 			<plugins>
 				<!--BUILD-->
 				<plugin>
-					<artifactId>versions-maven-plugin</artifactId>
-					<groupId>org.codehaus.mojo</groupId>
-					<version>${versions-maven-plugin.version}</version>
-				</plugin>
-				<plugin>
 					<artifactId>maven-clean-plugin</artifactId>
 					<groupId>org.apache.maven.plugins</groupId>
 					<version>${maven-clean-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<groupId>org.apache.maven.plugins</groupId>
+					<version>${maven-resources-plugin.version}</version>
+					<configuration>
+						<encoding>UTF-8</encoding>
+					</configuration>
 				</plugin>
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -133,11 +138,6 @@
 						<target>${jdk.version}</target>
 						<encoding>UTF-8</encoding>
 					</configuration>
-				</plugin>
-				<plugin>
-					<artifactId>maven-deploy-plugin</artifactId>
-					<groupId>org.apache.maven.plugins</groupId>
-					<version>${maven-deploy-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-jar-plugin</artifactId>
@@ -154,22 +154,45 @@
 					</configuration>
 				</plugin>
 				<plugin>
-					<artifactId>maven-dependency-plugin</artifactId>
-					<groupId>org.apache.maven.plugins</groupId>
-					<version>${maven-dependency-plugin.version}</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-resources-plugin</artifactId>
-					<groupId>org.apache.maven.plugins</groupId>
-					<version>${maven-resources-plugin.version}</version>
-				</plugin>
-				<plugin>
 					<artifactId>maven-source-plugin</artifactId>
 					<groupId>org.apache.maven.plugins</groupId>
 					<version>${maven-source-plugin.version}</version>
 				</plugin>
+				<plugin>
+					<artifactId>maven-install-plugin</artifactId>
+					<groupId>org.apache.maven.plugins</groupId>
+					<version>${maven-install-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>versions-maven-plugin</artifactId>
+					<groupId>org.codehaus.mojo</groupId>
+					<version>${versions-maven-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<groupId>org.apache.maven.plugins</groupId>
+					<version>${maven-deploy-plugin.version}</version>
+				</plugin>
 
 				<!--TESTS-->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<version>${maven-enforcer-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>enforce</id>
+							<configuration>
+								<rules>
+									<dependencyConvergence/>
+								</rules>
+							</configuration>
+							<goals>
+								<goal>enforce</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
 				<plugin>
 					<artifactId>spotbugs-maven-plugin</artifactId>
 					<groupId>com.github.spotbugs</groupId>
@@ -223,10 +246,6 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
-			<plugin>
-				<artifactId>maven-jar-plugin</artifactId>
-				<groupId>org.apache.maven.plugins</groupId>
 			</plugin>
 		</plugins>
 	</build>

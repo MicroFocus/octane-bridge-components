@@ -4,5 +4,5 @@ public interface OctaneTaskHandler {
 
 	String getTaskType();
 
-	Object handle(byte[] body) throws Exception;
+	Object handle(String taskBody) throws Exception;
 }

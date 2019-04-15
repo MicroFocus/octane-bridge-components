@@ -79,13 +79,13 @@ public class OctaneBridgeImpl implements OctaneBridge {
 		}
 
 		@Override
-		public void onWebSocketBinary(byte[] message, int offset, int length) {
+		public void onWebSocketText(String message) {
 			//  parse task wrapper
 			OctaneTaskWrapper taskWrapper;
 			try {
-				taskWrapper = OctaneTaskWrapper.parse(message, offset, length);
+				taskWrapper = om.readValue(message, OctaneTaskWrapper.class);
 			} catch (Exception e) {
-				logger.error("failed to parse the OctaneTaskWrapper, (partial) body: '" + message.length + "'", e);
+				logger.error("failed to parse the OctaneTaskWrapper, (partial) body: '" + message + "'", e);
 				//  TODO: consider to send some error message if expected result
 				return;
 			}

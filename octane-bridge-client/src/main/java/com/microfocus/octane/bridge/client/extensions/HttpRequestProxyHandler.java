@@ -12,9 +12,11 @@ public class HttpRequestProxyHandler implements OctaneTaskHandler {
 	}
 
 	@Override
-	public Object handle(byte[] body) throws Exception {
-		HttpRequestTask httpRequestTask = om.readValue(body, HttpRequestTask.class);
+	public Object handle(String taskBody) throws Exception {
+		HttpRequestTask httpRequestTask = om.readValue(taskBody, HttpRequestTask.class);
 		if (httpRequestTask.method != null && httpRequestTask.url != null) {
+			System.out.println(httpRequestTask.method);
+			System.out.println(httpRequestTask.url);
 			System.out.println(httpRequestTask.headers);
 			System.out.println(httpRequestTask.body);
 		}
